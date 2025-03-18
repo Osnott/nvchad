@@ -35,15 +35,17 @@ return {
 
   {
     'Chaitanyabsprip/fastaction.nvim',
-    opts = {},
+    event = { "User", "FilePost" },
   },
 
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    event = { "User", "FilePost" },
   },
 
   {
     "j-hui/fidget.nvim",
+    lazy = false,
   }
 }
