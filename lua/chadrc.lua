@@ -31,7 +31,7 @@ M.ui = {
 }
 
 M.lsp = {
-  signature = true,
+  signature = false,
 }
 
 return M
