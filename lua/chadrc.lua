@@ -9,7 +9,8 @@ M.base46 = {
 	theme = "catppuccin",
 
 	hl_override = {
-		Comment = { bg = "white", italic = true },
+    ["@comment"] = { italic = true },
+		Comment = { italic = true },
     Type = { italic = true },
     Function = { italic = true },
     Keyword = { italic = true },
@@ -19,12 +20,12 @@ M.base46 = {
 M.nvdash = { load_on_startup = true }
 M.ui = {
   tabufline = {
-    lazyload = false
-  }
+    lazyload = false,
+  },
 
   cmp = {
-    style = "flat_dark";
-  }
+    style = "flat_dark",
+  },
 }
 
 return M
