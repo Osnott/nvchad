@@ -7,10 +7,15 @@ local lspconfig = require "lspconfig"
 local servers = { "html", "cssls", "nixd", "clangd" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
+local ooo = function(client, bufnr)
+  nvlsp.on_attach(client, bufnr)
+  vim.keymap.set("n", "ca", "<cmd>lua require('fastaction'.code_action()<CR>)")
+end
+
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
+    on_attach = ooo,
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
   }

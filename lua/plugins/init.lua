@@ -14,14 +14,14 @@ return {
   },
 
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim", "lua", "vimdoc",
         "html", "css",
         "nix",
-  		},
-  	},
+      },
+    },
   },
 
   {
@@ -31,5 +31,19 @@ return {
       dofile(vim.g.base46_cache .. "trouble")
       require("trouble").setup()
     end
+  },
+
+  {
+    'Chaitanyabsprip/fastaction.nvim',
+    opts = {},
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
+  {
+    "j-hui/fidget.nvim",
   }
 }
