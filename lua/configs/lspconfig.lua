@@ -9,7 +9,8 @@ local nvlsp = require "nvchad.configs.lspconfig"
 
 local ooo = function(client, bufnr)
   nvlsp.on_attach(client, bufnr)
-  vim.keymap.set("n", "ca", "<cmd>lua require('fastaction'.code_action()<CR>)")
+  vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>lua require('fastaction').code_action()<CR>)",
+    { buffer = bufnr, desc = "LSP Code Action" })
 end
 
 -- lsps with default config
