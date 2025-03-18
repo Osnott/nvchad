@@ -9,7 +9,7 @@ M.base46 = {
 	theme = "catppuccin",
 
 	hl_override = {
-		Comment = { italic = true },
+		Comment = { bg = "white", italic = true },
     Type = { italic = true },
     Function = { italic = true },
     Keyword = { italic = true },
