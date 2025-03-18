@@ -35,13 +35,13 @@ return {
 
   {
     'Chaitanyabsprip/fastaction.nvim',
-    event = { "User", "FilePost" },
+    event = { "User FilePost" },
   },
 
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    event = { "User", "FilePost" },
+    event = { "User FilePost" },
   },
 
   {
