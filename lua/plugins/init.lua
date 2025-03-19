@@ -43,6 +43,9 @@ return {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = { "User FilePost" },
+    config = function()
+      require("todo-comments").setup()
+    end
   },
 
   {
@@ -88,13 +91,12 @@ return {
 
   {
     "folke/drop.nvim",
-    opts = {
-    },
+    lazy = false,
+    opts = {},
   },
 
   {
     "kdheepak/lazygit.nvim",
-    lazy = true,
     cmd = {
       "LazyGit",
       "LazyGitConfig",
