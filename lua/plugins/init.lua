@@ -100,20 +100,53 @@ return {
     opts = {},
   },
 
+  -- {
+  --   "kdheepak/lazygit.nvim",
+  --   cmd = {
+  --     "LazyGit",
+  --     "LazyGitConfig",
+  --     "LazyGitCurrentFile",
+  --     "LazyGitFilter",
+  --     "LazyGitFilterCurrentFile",
+  --   },
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   keys = {
+  --     { "<leader>lg", "<cmd>LazyGit<cr>", desc = "open LazyGit" },
+  --   },
+  -- },
+
   {
-    "kdheepak/lazygit.nvim",
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
+    "folke/snacks.nvim",
+    lazy = false,
+    opts = {
+      scratch = { enabled = true },
+      scroll = { enabled = true },
+      lazygit = { enabled = true },
     },
     keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "open LazyGit" },
+      {
+        "<leader>.",
+        function()
+          require("snacks").scratch()
+        end,
+        desc = "Toggle Scratch Buffer",
+      },
+      {
+        "<leader>S",
+        function()
+          require("snacks").scratch.select()
+        end,
+        desc = "Select Scratch Buffer",
+      },
+      {
+        "<leader>lg",
+        function()
+          require("snacks").lazygit.open()
+        end,
+        desc = "Open lazygit",
+      },
     },
   },
 }
