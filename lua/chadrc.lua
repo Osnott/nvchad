@@ -34,4 +34,13 @@ M.lsp = {
   signature = false,
 }
 
+M.term = {
+  float = {
+    row = 0.08,
+    col = 0.04,
+    width = 0.9,
+    height = 0.8,
+  },
+}
+
 return M

@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
@@ -17,8 +17,11 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "vim", "lua", "vimdoc",
-        "html", "css",
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
         "nix",
       },
     },
@@ -30,11 +33,11 @@ return {
     config = function()
       dofile(vim.g.base46_cache .. "trouble")
       require("trouble").setup()
-    end
+    end,
   },
 
   {
-    'Chaitanyabsprip/fastaction.nvim',
+    "Chaitanyabsprip/fastaction.nvim",
     event = { "User FilePost" },
     opts = {},
   },
@@ -45,7 +48,7 @@ return {
     event = { "User FilePost" },
     config = function()
       require("todo-comments").setup()
-    end
+    end,
   },
 
   {
@@ -72,7 +75,7 @@ return {
             find = "No signature help available",
           },
           opts = { skip = true },
-        }
+        },
       },
     },
     dependencies = {
@@ -82,10 +85,12 @@ return {
   },
 
   {
-    'kosayoda/nvim-lightbulb',
+    "kosayoda/nvim-lightbulb",
     event = "User FilePost",
     config = function()
-      require("nvim-lightbulb").setup()
+      require("nvim-lightbulb").setup {
+        autocmd = { enabled = true },
+      }
     end,
   },
 
@@ -95,20 +100,53 @@ return {
     opts = {},
   },
 
+  -- {
+  --   "kdheepak/lazygit.nvim",
+  --   cmd = {
+  --     "LazyGit",
+  --     "LazyGitConfig",
+  --     "LazyGitCurrentFile",
+  --     "LazyGitFilter",
+  --     "LazyGitFilterCurrentFile",
+  --   },
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   keys = {
+  --     { "<leader>lg", "<cmd>LazyGit<cr>", desc = "open LazyGit" },
+  --   },
+  -- },
+
   {
-    "kdheepak/lazygit.nvim",
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
+    "folke/snacks.nvim",
+    lazy = false,
+    opts = {
+      scratch = { enabled = true },
+      scroll = { enabled = true },
+      lazygit = { enabled = true },
     },
     keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "open LazyGit" }
-    }
-  }
+      {
+        "<leader>.",
+        function()
+          require("snacks").scratch()
+        end,
+        desc = "Toggle Scratch Buffer",
+      },
+      {
+        "<leader>S",
+        function()
+          require("snacks").scratch.select()
+        end,
+        desc = "Select Scratch Buffer",
+      },
+      {
+        "<leader>lg",
+        function()
+          require("snacks").lazygit.open()
+        end,
+        desc = "Open lazygit",
+      },
+    },
+  },
 }
