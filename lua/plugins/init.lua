@@ -23,6 +23,7 @@ return {
         "html",
         "css",
         "nix",
+        "java",
       },
     },
   },
@@ -158,5 +159,11 @@ return {
       ["websocat"] = nil,
     },
     opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+  },
+
+  {
+    "mfussenegger/nvim-jdtls",
+    dependencies = { "folke/which-key.nvim" },
+    ft = { "java" },
   },
 }
