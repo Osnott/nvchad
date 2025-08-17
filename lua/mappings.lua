@@ -6,3 +6,5 @@ map('n', "<C-Left>", "<C-w>h", { desc = "switch window left" })
 map('n', "<C-Right>", "<C-w>l", { desc = "switch window right" })
 map('n', "<C-Down>", "<C-w>j", { desc = "switch window down" })
 map('n', "<C-Up>", "<C-w>k", { desc = "switch window up" })
+
+map('n', "<leader>fd", ":Telescope diagnostics<CR>", { desc = "telescope list diagnostics" })
