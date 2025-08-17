@@ -5,6 +5,49 @@ return {
     opts = require "configs.conform",
   },
 
+  {
+    "nvim-java/nvim-java",
+    lazy = false,
+    dependencies = {
+      "nvim-java/lua-async-await",
+      "nvim-java/nvim-java-core",
+      "nvim-java/nvim-java-test",
+      "nvim-java/nvim-java-dap",
+      "MunifTanjim/nui.nvim",
+      "neovim/nvim-lspconfig",
+      "mfussenegger/nvim-dap",
+      {
+        "williamboman/mason.nvim",
+        opts = {
+          registries = {
+            "github:nvim-java/mason-registry",
+            "github:mason-org/mason-registry",
+          },
+        },
+      },
+    },
+    config = function()
+      require("java").setup {
+        jdk = {
+          auto_install = false,
+        },
+      }
+      require("lspconfig").jdtls.setup {
+        on_attach = function(client, bufnr)
+          vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>lua require('fastaction').code_action()<CR>)",
+            { buffer = bufnr, desc = "LSP Code Action" })
+          require("nvchad.configs.lspconfig").on_attach()
+        end,
+        capabilities = require("nvchad.configs.lspconfig").capabilities,
+        filetypes = { "java" },
+
+        handlers = {
+          ["$/progress"] = function(_, result, ctx) end,
+        }
+      }
+    end,
+  },
+
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
@@ -159,11 +202,5 @@ return {
       ["websocat"] = nil,
     },
     opts = {}, -- lazy.nvim will implicitly calls `setup {}`
-  },
-
-  {
-    "mfussenegger/nvim-jdtls",
-    dependencies = { "folke/which-key.nvim" },
-    ft = { "java" },
   },
 }
