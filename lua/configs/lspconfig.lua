@@ -4,13 +4,17 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "nixd", "clangd", "tinymist" }
+local servers = { "html", "cssls", "nixd", "clangd", "tinymist", "basedpyright" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local ooo = function(client, bufnr)
   nvlsp.on_attach(client, bufnr)
-  vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>lua require('fastaction').code_action()<CR>)",
-    { buffer = bufnr, desc = "LSP Code Action" })
+  vim.keymap.set(
+    { "n", "v" },
+    "<leader>ca",
+    "<cmd>lua require('fastaction').code_action()<CR>)",
+    { buffer = bufnr, desc = "LSP Code Action" }
+  )
 end
 
 -- lsps with default config
