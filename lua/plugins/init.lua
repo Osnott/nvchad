@@ -30,12 +30,17 @@ return {
       require("java").setup {
         jdk = {
           auto_install = false,
+          version = "17.0.2",
         },
       }
       require("lspconfig").jdtls.setup {
         on_attach = function(client, bufnr)
-          vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>lua require('fastaction').code_action()<CR>)",
-            { buffer = bufnr, desc = "LSP Code Action" })
+          vim.keymap.set(
+            { "n", "v" },
+            "<leader>ca",
+            "<cmd>lua require('fastaction').code_action()<CR>)",
+            { buffer = bufnr, desc = "LSP Code Action" }
+          )
           require("nvchad.configs.lspconfig").on_attach()
         end,
         capabilities = require("nvchad.configs.lspconfig").capabilities,
@@ -43,7 +48,7 @@ return {
 
         handlers = {
           ["$/progress"] = function(_, result, ctx) end,
-        }
+        },
       }
     end,
   },
@@ -58,17 +63,17 @@ return {
     },
     opts = {},
     config = function(_, opts)
-      local dap = require("dap")
-      local dapui = require("dapui")
+      local dap = require "dap"
+      local dapui = require "dapui"
       dapui.setup(opts)
       dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open({})
+        dapui.open {}
       end
       dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close({})
+        dapui.close {}
       end
       dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close({})
+        dapui.close {}
       end
     end,
   },
@@ -92,6 +97,7 @@ return {
         "css",
         "nix",
         "java",
+        "python",
       },
     },
   },
