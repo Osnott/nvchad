@@ -168,13 +168,6 @@ return {
       }
     end,
   },
-
-  {
-    "folke/drop.nvim",
-    lazy = false,
-    opts = {},
-  },
-
   -- {
   --   "kdheepak/lazygit.nvim",
   --   cmd = {
@@ -191,7 +184,6 @@ return {
   --     { "<leader>lg", "<cmd>LazyGit<cr>", desc = "open LazyGit" },
   --   },
   -- },
-
   {
     "folke/snacks.nvim",
     lazy = false,
