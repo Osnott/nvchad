@@ -15,7 +15,6 @@ return {
       "nvim-java/nvim-java-dap",
       "MunifTanjim/nui.nvim",
       "neovim/nvim-lspconfig",
-      "mfussenegger/nvim-dap",
       {
         "williamboman/mason.nvim",
         opts = {
@@ -55,7 +54,18 @@ return {
 
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = { "nvim-neotest/nvim-nio" },
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      {
+        "jay-babu/mason-nvim-dap.nvim",
+        opts = {
+          automatic_installation = true,
+
+          handlers = {},
+        },
+      },
+      "mfussenegger/nvim-dap",
+    },
     -- stylua: ignore
     keys = {
       { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
