@@ -3,7 +3,7 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
-    typst = { "typstfmt" },
+    typst = { "prettypst" },
     nix = { "alejandra" },
   },
 
