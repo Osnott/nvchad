@@ -28,6 +28,20 @@ M.ui = {
   cmp = {
     style = "atom",
   },
+
+  statusline = {
+    order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "wc", "diagnostics", "lsp", "cwd", "cursor" },
+    -- TODO: Make this toggleale?
+    modules = {
+      wc = function()
+        if vim.fn.mode() == "v" or vim.fn.mode() == "V" or vim.fn.mode() == "" then
+          return vim.fn.wordcount().visual_words
+        else
+          return vim.fn.wordcount().words
+        end
+      end,
+    },
+  },
 }
 
 M.lsp = {
